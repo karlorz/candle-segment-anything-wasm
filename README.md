@@ -1,5 +1,5 @@
 ---
-title: Candle Segment Anything Anything SAM Wasm Demo
+title: Candle Segment Anything SAM Wasm
 emoji: 🌍
 colorFrom: gray
 colorTo: pink
