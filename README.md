@@ -1,6 +1,6 @@
 ---
-title: Candle Segment Anything SAM Wasm
-emoji: 🌍
+title: Candle Segment Anything Wasm
+emoji: 🕯️🎭
 colorFrom: gray
 colorTo: pink
 sdk: static
