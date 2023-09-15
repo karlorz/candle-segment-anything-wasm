@@ -16,9 +16,9 @@ export class Model {
 /**
 * @param {number} x
 * @param {number} y
-* @returns {string}
+* @returns {any}
 */
-  mask_for_point(x: number, y: number): string;
+  mask_for_point(x: number, y: number): any;
 }
 
 export type InitInput = RequestInfo | URL | Response | BufferSource | WebAssembly.Module;
@@ -32,8 +32,8 @@ export interface InitOutput {
   readonly main: (a: number, b: number) => number;
   readonly __wbindgen_add_to_stack_pointer: (a: number) => number;
   readonly __wbindgen_malloc: (a: number, b: number) => number;
-  readonly __wbindgen_free: (a: number, b: number, c: number) => void;
   readonly __wbindgen_realloc: (a: number, b: number, c: number, d: number) => number;
+  readonly __wbindgen_free: (a: number, b: number, c: number) => void;
   readonly __wbindgen_start: () => void;
 }
 
