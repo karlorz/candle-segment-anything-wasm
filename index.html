@@ -271,7 +271,7 @@
           ctxMask.fillStyle = "rgba(0, 255, 255, 1)";
           for(const pt of points) {
             ctxMask.beginPath();
-            ctxMask.arc(pt[0] * canvas.width, pt[1] * canvas.height, 2, 0, 2 * Math.PI);
+            ctxMask.arc(pt[0] * canvas.width, pt[1] * canvas.height, 3, 0, 2 * Math.PI);
             ctxMask.fill();
           }
           ctxMask.restore();
