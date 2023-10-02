@@ -14,11 +14,10 @@ export class Model {
 */
   set_image_embeddings(image_data: Uint8Array): void;
 /**
-* @param {number} x
-* @param {number} y
+* @param {any} input
 * @returns {any}
 */
-  mask_for_point(x: number, y: number): any;
+  mask_for_point(input: any): any;
 }
 
 export type InitInput = RequestInfo | URL | Response | BufferSource | WebAssembly.Module;
@@ -28,12 +27,13 @@ export interface InitOutput {
   readonly __wbg_model_free: (a: number) => void;
   readonly model_new: (a: number, b: number, c: number, d: number) => void;
   readonly model_set_image_embeddings: (a: number, b: number, c: number, d: number) => void;
-  readonly model_mask_for_point: (a: number, b: number, c: number, d: number) => void;
+  readonly model_mask_for_point: (a: number, b: number, c: number) => void;
   readonly main: (a: number, b: number) => number;
-  readonly __wbindgen_add_to_stack_pointer: (a: number) => number;
   readonly __wbindgen_malloc: (a: number, b: number) => number;
   readonly __wbindgen_realloc: (a: number, b: number, c: number, d: number) => number;
+  readonly __wbindgen_add_to_stack_pointer: (a: number) => number;
   readonly __wbindgen_free: (a: number, b: number, c: number) => void;
+  readonly __wbindgen_exn_store: (a: number) => void;
   readonly __wbindgen_start: () => void;
 }
 
