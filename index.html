@@ -173,7 +173,7 @@
         undoBtn.disabled = false;
         const { maskURL } = await getSegmentationMask(pointArr);
         isSegmenting = false;
-        drawMask(maskURL);
+        drawMask(maskURL, pointArr);
       });
       async function undoPoint() {
         if (!hasImage || isEmbedding || isSegmenting) {
@@ -191,7 +191,7 @@
         isSegmenting = true;
         const { maskURL } = await getSegmentationMask(pointArr);
         isSegmenting = false;
-        drawMask(maskURL);
+        drawMask(maskURL, pointArr);
       }
       function togglePointMode(mode) {
         bgPointMode = mode ? mode : !bgPointMode;
@@ -249,7 +249,7 @@
         canvas.parentElement.style.height = "auto";
         dropButtons.classList.remove("invisible");
       }
-      function drawMask(maskURL) {
+      function drawMask(maskURL, points) {
         if (!maskURL) {
           throw new Error("No mask URL provided");
         }
@@ -260,12 +260,23 @@
         img.onload = () => {
           mask.width = canvas.width;
           mask.height = canvas.height;
+          ctxMask.save();
           ctxMask.drawImage(canvas, 0, 0);
           ctxMask.globalCompositeOperation = "source-atop";
           ctxMask.fillStyle = "rgba(255, 0, 0, 0.6)";
           ctxMask.fillRect(0, 0, canvas.width, canvas.height);
           ctxMask.globalCompositeOperation = "destination-in";
           ctxMask.drawImage(img, 0, 0);
+          ctxMask.globalCompositeOperation = "source-over";
+          ctxMask.fillStyle = "rgba(0, 255, 255, 1)";
+          for(const pt of points) {
+            ctxMask.beginPath();
+            ctxMask.arc(pt[0] * canvas.width, pt[1] * canvas.height, 2, 0, 2 * Math.PI);
+            ctxMask.fill();
+          }
+          ctxMask.restore();
+          
+          
         };
         img.src = maskURL;
       }
