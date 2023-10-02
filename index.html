@@ -88,13 +88,14 @@
       const statusOutput = document.querySelector("#output-status");
 
       //add event listener to file input
-      fileUpload.addEventListener("change", (e) => {
+      fileUpload.addEventListener("input", (e) => {
         const target = e.target;
         if (target.files.length > 0) {
           const href = URL.createObjectURL(target.files[0]);
           cleanImageCanvas();
           drawImageCanvas(href);
           setImageEmbeddings(href);
+          togglePointMode(false);
         }
       });
       // add event listener to drop-area
@@ -120,10 +121,12 @@
           cleanImageCanvas();
           drawImageCanvas(href);
           setImageEmbeddings(href);
+          togglePointMode(false);
         } else if (url) {
           cleanImageCanvas();
           drawImageCanvas(url);
           setImageEmbeddings(url);
+          togglePointMode(false);
         }
       });
 
@@ -194,7 +197,7 @@
         drawMask(maskURL, pointArr);
       }
       function togglePointMode(mode) {
-        bgPointMode = mode ? mode : !bgPointMode;
+        bgPointMode = mode === undefined ? !bgPointMode : mode;
 
         maskBtn.querySelector("span").innerText = bgPointMode
           ? "Background Point"
