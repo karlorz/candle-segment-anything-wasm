@@ -179,6 +179,7 @@
             img.onload = () => {
               resolve(img);
             };
+            img.crossOrigin = "anonymous";
             img.src = imageURL;
           });
         };
