@@ -1,0 +1,12 @@
+# OS artifacts
+.DS_Store
+Thumbs.db
+
+# Dependency directories
+node_modules/
+
+# Build outputs
+dist/
+
+# Logs
+*.log
